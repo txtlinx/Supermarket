@@ -9,6 +9,7 @@ export default function Product(props) {
   );
   const quantity = productFromCart ? productFromCart.quantity : 0;
 
+  
   return (
     <div className="product">
       <div className="product-image-container">
@@ -34,11 +35,11 @@ export default function Product(props) {
       <div className="product-checkout">
         <div>
             {quantity > 0 && (
-            <Button outline onClick={() => props.onProductDelete(details.id)} className="product-delete">x</Button>
+            <Button outline onClick={() => props.onProductDelete(details)} className="product-delete">-</Button>
           )}
         </div>
         <Button outline onClick={() => props.onProductAdd(details)}>
-          ${details.price}
+          Add ${details.price} 
         </Button>
       </div>
     </div>
