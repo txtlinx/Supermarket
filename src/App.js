@@ -35,7 +35,7 @@ function App() {
       (product) => product.id === newProduct.id
     );
     if (existingProduct) {
-      // increase quantity
+      // incremetnar cantidad
       const updatedCart = cart.map((product) => {
         if (product.id === newProduct.id) {
           return {
@@ -47,7 +47,7 @@ function App() {
       });
       setCart(updatedCart);
     } else {
-      // product is new to the cart
+      // producto nue apra el cart
       setCart([
         ...cart,
         {
@@ -64,7 +64,7 @@ function App() {
       (product) => product.id === newProduct.id
     );
     if (existingProduct) {
-      // increase quantity
+      // disminiye quantity 
       const updatedCart = cart.map((product) => {
         if (product.id === newProduct.id) {
           return {
@@ -76,7 +76,7 @@ function App() {
       });
       setCart(updatedCart);
     } else {
-      // product is new to the cart
+     
       setCart([
         ...cart,
         {
@@ -131,6 +131,7 @@ function App() {
           </Route>
         </Routes>
       </div>
+          <Footer/>
     </BrowserRouter>
   );
 }

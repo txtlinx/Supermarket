@@ -18,6 +18,7 @@ export function Footer() {
       <p className={styles.copy_right}>
         <span>Pablo Dos Santos</span> &copy; 2023
       </p>
+      
     </footer>
   )
 }
