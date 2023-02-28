@@ -12,7 +12,7 @@ export default function Cart({ cart }) {
       <div>
         <h1>Your Cart</h1>
         {cart.length === 0 && (
-          <p>You have not added any product to your cart yet.</p>
+          <p>You have not added any product te your cart yet.</p>
         )}
         {cart.length > 0 && (
           <>

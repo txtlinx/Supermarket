@@ -39,7 +39,7 @@ export default function Product(props) {
           )}
         </div>
         <Button outline onClick={() => props.onProductAdd(details)}>
-          Add ${details.price} 
+          Add this product only for: ${details.price} 
         </Button>
       </div>
     </div>
