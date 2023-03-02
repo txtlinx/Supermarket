@@ -9,7 +9,14 @@ export default function Product(props) {
   );
   const quantity = productFromCart ? productFromCart.quantity : 0;
 
-  
+  const validation =(q,details)=>{
+    if(q > 0) {
+     return `${details.price} USD - Add`
+       } else {
+       return `Add this product only for: ${details.price} USD`
+      
+    }
+   }
   return (
     <div className="product">
       <div className="product-image-container">
@@ -39,9 +46,12 @@ export default function Product(props) {
           )}
         </div>
         <Button outline onClick={() => props.onProductAdd(details)}>
-          Add this product only for: ${details.price} 
+        
+        {validation(quantity,details)}
         </Button>
       </div>
     </div>
   );
 }
+
+ 

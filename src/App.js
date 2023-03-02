@@ -30,12 +30,12 @@ function App() {
   }, [cart]);
   
   function handleProductAdd(newProduct) {
-    // check if item exists
+    
     const existingProduct = cart.find(
       (product) => product.id === newProduct.id
     );
     if (existingProduct) {
-      // incremetnar cantidad
+      
       const updatedCart = cart.map((product) => {
         if (product.id === newProduct.id) {
           return {
@@ -47,7 +47,7 @@ function App() {
       });
       setCart(updatedCart);
     } else {
-      // producto nue apra el cart
+    
       setCart([
         ...cart,
         {
@@ -64,7 +64,7 @@ function App() {
       (product) => product.id === newProduct.id
     );
     if (existingProduct) {
-      // disminiye quantity 
+      
       const updatedCart = cart.map((product) => {
         if (product.id === newProduct.id) {
           return {

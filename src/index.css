@@ -465,6 +465,7 @@ input:focus {
 /* Loader */
 .spinner {
   animation: rotator 1.4s linear infinite;
+  
 }
 
 @keyframes rotator {

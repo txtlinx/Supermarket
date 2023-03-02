@@ -10,7 +10,7 @@ export default function Loader() {
       <circle
         className="path"
         fill="none"
-        strokeWidth="6"
+        strokeWidth="20"
         strokeLinecap="round"
         cx="33"
         cy="33"
