@@ -4,6 +4,7 @@ import useFetch from "./useFetch.js";
 import Loader from "./Loader.js";
 
 export default function Products(props) {
+  document.title ="Products"
   const [products, setProducts] = useState([
     {
        "description":"200g cheese block",
@@ -39,27 +40,35 @@ export default function Products(props) {
       "image":"https://conteudo.imguol.com.br/c/entretenimento/4e/2020/03/23/pera-1584989626321_v2_4x3.jpg",
       "name":"Pear",
       "price":4.21
-   }
+   },
+   {
+    "description":"1kg Meat",
+    "id":6,
+    "image":"https://media.gq.com.mx/photos/620bcf7243f71a078a355280/16:9/w_2560%2Cc_limit/carnes-85650597.jpg",
+    "name":"Meat",
+    "price":34.21
+ }
  ]);
-  // const { get, loading } = useFetch(
-  //   "https://react-tutorial-demo.firebaseio.com/"
-  // );
+ //CALL useFetch here...configurar firebase
+ const { get, loading } = useFetch(
+  "https://react-tutorial-demo.firebaseio.com/"
+);
 
-  // useEffect(() => {
-  //   get("supermarket.json")
-  //     .then((data) => {
-  //       setProducts(data);
-  //       console.log(data);
-  //     })
-  //     .catch((error) => console.log("Could not load product", error));
-  // }, []);
- let loading = false;
+  useEffect(() => {
+    get("supermarket.json")
+      .then((data) => {
+        setProducts(data);
+        console.log(data);
+      })
+      .catch((error) => console.log("Could not load product", error));
+  });
+ //let loading = false;
   return (
     <div className="products-layout">
       <h1>Products</h1>
       <p>Our products</p>
       <div className="products-grid">
-        {loading && <Loader />}
+        {loading && setInterval((<Loader />),50000)}
 
         {products.map((product) => {
           return (

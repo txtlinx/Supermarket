@@ -1,7 +1,7 @@
 
-import React from "react";
+import React,{createContext} from "react";
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About.js";
@@ -12,7 +12,9 @@ import ProductDetailNutrition from "./components/ItemDetailNutrition.js";
 import ProductDetailStorage from "./components/ItemDetailStorage.js";
 import Cart from "./components/Cart.js";
 import Footer from "./components/Footer";
+
 function App() {
+ 
   const [cart, setCart] = useState(function () {
     let savedCart = [];
     try {
@@ -26,10 +28,13 @@ function App() {
   useEffect(() => {
     if (cart) {
       localStorage.setItem("cart", JSON.stringify(cart));
+     
     }
+    console.log(`dentro de useEffect${cart}`)
   }, [cart]);
   
   function handleProductAdd(newProduct) {
+    
     
     const existingProduct = cart.find(
       (product) => product.id === newProduct.id
@@ -38,16 +43,20 @@ function App() {
       
       const updatedCart = cart.map((product) => {
         if (product.id === newProduct.id) {
+          
           return {
             ...product,
             quantity: product.quantity + 1,
+            
           };
+          
         }
+     
         return product;
       });
       setCart(updatedCart);
     } else {
-    
+   
       setCart([
         ...cart,
         {
@@ -56,8 +65,15 @@ function App() {
         },
       ]);
     }
-  }
   
+    
+  }
+  function handleProductDelAll(){
+
+    setCart([])
+    document.title = "add products"
+
+  }
 
   function handleProductDelete(newProduct) {
     const existingProduct = cart.find(
@@ -67,6 +83,7 @@ function App() {
       
       const updatedCart = cart.map((product) => {
         if (product.id === newProduct.id) {
+        
           return {
             ...product,
             quantity: product.quantity - 1,
@@ -81,11 +98,13 @@ function App() {
         ...cart,
         {
           ...newProduct,
-          quantity: 1,
+          quantity: -1,
         },
       ]);
   }
+ 
 }
+
   return (
     <BrowserRouter>
       <Navbar cart={cart} />
@@ -117,7 +136,7 @@ function App() {
           >
             <Route
               path=""
-              element={<ProductDetailInfo onProductAdd={handleProductAdd} />}
+              element={<ProductDetailInfo onProductAdd={handleProductAdd} onProductDelete={handleProductDelete}/>}
             ></Route>
 
             <Route
@@ -128,9 +147,14 @@ function App() {
             <Route path="storage" element={<ProductDetailStorage />}></Route>
           </Route>
           <Route path="/cart" element={<Cart cart={cart} />}>
+           
           </Route>
         </Routes>
+        
+        {cart.length > 0  && <Link className="boton" onClick={handleProductDelAll}>empty cart </Link>}
+       
       </div>
+      
           <Footer/>
     </BrowserRouter>
   );

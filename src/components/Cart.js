@@ -2,10 +2,10 @@ import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import Input from "./Input.js";
 import Button from "./Button.js";
-
+import { Link ,useOutletContext} from "react-router-dom";
 
 export default function Cart({ cart }) {
-  console.log(cart)
+  document.title ="Cart"
   const totalPrice = cart.reduce(
     (total, product) => total + product.price * product.quantity,
     0
@@ -13,9 +13,10 @@ export default function Cart({ cart }) {
 
 
   const [email, setEmail] = useState("");
-
+  const product = useOutletContext();
   function handleFormSubmit(event) {
     event.preventDefault();
+    
   
    
    
@@ -30,11 +31,12 @@ export default function Cart({ cart }) {
           <p>You have not added any product to your cart yet.</p>
         )}
         {cart.length > 0 && (
+          
           <>
             <table className="table table-cart">
               <thead>
                 <tr>
-                  <th width="25%" className="th-product">
+                  <th width="55%" className="th-product">
                     Product
                   </th>
                   <th width="20%">Unit price</th>
@@ -45,22 +47,27 @@ export default function Cart({ cart }) {
               <tbody>
                 {cart.map((product) => {
                   return (
+            
+                      
                     <tr key={product.id}>
                       <td>
                         <img
                           src={product.image}
-                          width="30"
-                          height="30"
+                          width="120"
+                          height="120"
                           alt=""
                         />{" "}
                         {product.name}
                       </td>
                       <td>${product.price}</td>
-                      <td>{product.quantity}</td>
+
+                      {product.quantity < 1 ? <td>removed </td>:<td>{product.quantity}</td>}
+                      
                       <td>
-                        <strong>${product.price * product.quantity}</strong>
+                      { product.price * product.quantity > 0 ? <strong>${product.price * product.quantity}</strong>:""}
                       </td>
                     </tr>
+                    
                   );
                 })}
               </tbody>
@@ -83,7 +90,9 @@ export default function Cart({ cart }) {
                 type="email"
                 required
               />
-              <button type="submit" className="">Pay</button>
+              <Link type="" to="/" className="boton">
+              pay your purchase
+        </Link> 
             </form>
           </>
         )}

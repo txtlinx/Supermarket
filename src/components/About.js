@@ -17,6 +17,7 @@ export default function About() {
           className="rounded"
           alt=""
         />
+          {document.title ="Abous Us"}
       </div>
     );
   }

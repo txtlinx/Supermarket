@@ -6,6 +6,7 @@ export default function Navbar(props) {
     (total, product) => total + product.quantity,
     0
   );
+  
 
   return (
     <nav className="navbar">

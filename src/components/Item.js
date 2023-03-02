@@ -11,7 +11,7 @@ export default function Product(props) {
 
   const validation =(q,details)=>{
     if(q > 0) {
-     return `${details.price} USD - Add`
+     return ` +`
        } else {
        return `Add this product only for: ${details.price} USD`
       
@@ -27,10 +27,12 @@ export default function Product(props) {
             height="100"
             className="product-image"
             alt={details.name}
+            
           />
         </Link>
           {quantity > 0 && (
             <div className="product-quantity-container">
+              ${details.price}
               <div className="product-quantity">{quantity}</div>
             </div>
           )}

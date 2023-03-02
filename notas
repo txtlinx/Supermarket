@@ -1,0 +1,3 @@
+  <Button  onClick={() => onProductDelete(product)} className="boton">-</Button> 
+
+  onProductDelete={handleProductDelete}/ en app.js
