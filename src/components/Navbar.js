@@ -2,10 +2,12 @@ import { NavLink } from "react-router-dom";
 import { BsPaypal } from 'react-icons/bs';
 
 export default function Navbar(props) {
-  const cartCount = props.cart.reduce(
-    (total, product) => total + product.quantity,
-    0
-  );
+  const cartCount = props.cart.reduce((total, product) => {
+    if (product.quantity >= 0) {
+      return total + product.quantity;
+    }
+    return total;
+  }, 0);
   
 
   return (
@@ -31,9 +33,9 @@ export default function Navbar(props) {
         </li>
         <li>
           <NavLink to="/cart" className="cart">
-            {cartCount > 0 && (<div>
+            <div>
           <BsPaypal className="icon" />
-          <span className="badge">({cartCount})</span></div> )}
+          <span className="badge">({cartCount})</span></div>
           </NavLink>
         </li>
       </ul>

@@ -1,6 +1,7 @@
 import {useContext,useState} from "react";
 import {useOutletContext} from "react-router-dom";
 import Button from "./Button.js";
+import {NavLink } from "react-router-dom";
 
 
 export default function ProductDetailInfo({onProductAdd,onProductDelete}) {
@@ -18,6 +19,7 @@ export default function ProductDetailInfo({onProductAdd,onProductDelete}) {
       <Button className="btn-outline" onClick={() => onProductAdd(product)}>+</Button>
       
       <Button  onClick={() => onProductDelete(product)  }  className="product-delete2">-</Button>
+      <NavLink to="/cart" className="product-delete">look shopping cart</NavLink> 
     </>
   );
 }

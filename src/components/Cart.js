@@ -6,10 +6,22 @@ import { Link ,useOutletContext} from "react-router-dom";
 
 export default function Cart({ cart }) {
   document.title ="Cart"
-  const totalPrice = cart.reduce(
-    (total, product) => total + product.price * product.quantity,
-    0
-  );
+
+  // if (cart.quantity <0){
+  //   return {
+  //     ...product,
+  //     quantity: product.quantity = 1
+  //  }
+  // }
+  
+  
+  
+  const totalPrice = cart.reduce((total, product) => {
+    if (product.quantity > 0) {
+      return total + product.price * product.quantity;
+    }
+    return total;
+  }, 0);
 
 
   const [email, setEmail] = useState("");
@@ -27,12 +39,15 @@ export default function Cart({ cart }) {
     <div className="cart-layout">
       <div>
         <h1>Your Cart</h1>
+       
         {cart.length === 0 && (
+          
           <p>You have not added any product to your cart yet.</p>
         )}
         {cart.length > 0 && (
           
           <>
+        
             <table className="table table-cart">
               <thead>
                 <tr>

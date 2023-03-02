@@ -13,6 +13,8 @@ import ProductDetailStorage from "./components/ItemDetailStorage.js";
 import Cart from "./components/Cart.js";
 import Footer from "./components/Footer";
 
+
+
 function App() {
  
   const [cart, setCart] = useState(function () {
@@ -87,8 +89,10 @@ function App() {
           return {
             ...product,
             quantity: product.quantity - 1,
+            yq: product.yq - 1,
           };
         }
+      
         return product;
       });
       setCart(updatedCart);
@@ -104,6 +108,7 @@ function App() {
   }
  
 }
+
 
   return (
     <BrowserRouter>
