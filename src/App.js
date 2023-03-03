@@ -86,10 +86,15 @@ function App() {
       const updatedCart = cart.map((product) => {
         if (product.id === newProduct.id) {
         
+          const newQuantity = product.quantity - 1;
+          if (newQuantity < 0) {
+            return product; // no permitimos que la cantidad sea menor que cero
+          }
+        
           return {
             ...product,
-            quantity: product.quantity - 1,
-            yq: product.yq - 1,
+            quantity: newQuantity,
+          
           };
         }
       
@@ -105,9 +110,9 @@ function App() {
           quantity: -1,
         },
       ]);
+    }
   }
- 
-}
+  
 
 
   return (
@@ -141,7 +146,7 @@ function App() {
           >
             <Route
               path=""
-              element={<ProductDetailInfo onProductAdd={handleProductAdd} onProductDelete={handleProductDelete}/>}
+              element={<ProductDetailInfo onProductAdd={handleProductAdd} cart={cart} onProductDelete={handleProductDelete}/>}
             ></Route>
 
             <Route

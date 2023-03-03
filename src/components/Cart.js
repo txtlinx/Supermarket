@@ -76,7 +76,7 @@ export default function Cart({ cart }) {
                       </td>
                       <td>${product.price}</td>
 
-                      {product.quantity < 1 ? <td>removed </td>:<td>{product.quantity}</td>}
+                      {product.quantity < 1 ? <td>{product.quantity = 0}  (removed)</td>:<td>{product.quantity}</td>}
                       
                       <td>
                       { product.price * product.quantity > 0 ? <strong>${product.price * product.quantity}</strong>:""}

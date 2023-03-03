@@ -35,7 +35,8 @@ export default function Navbar(props) {
           <NavLink to="/cart" className="cart">
             <div>
           <BsPaypal className="icon" />
-          <span className="badge">({cartCount})</span></div>
+          { cartCount > 0 ?
+          <span className="badge">({cartCount })</span>:""}</div> 
           </NavLink>
         </li>
       </ul>
