@@ -5,6 +5,7 @@ import Loader from "./Loader.js";
 
 export default function Products(props) {
   document.title ="Products"
+  const [busqueda, setBusqueda] = useState()
   const [products, setProducts] = useState([
     {
        "description":"200g cheese block",
@@ -60,17 +61,26 @@ export default function Products(props) {
         setProducts(data);
         console.log(data);
       })
-      .catch((error) => console.log("Could not load product", error));
+      .catch((error) => console.log("Cld nt load product", error));
   });
  //let loading = false;
+ const newProducts= products.filter((p) => p.name.toLowerCase().includes(busqueda ? busqueda.toLowerCase() : ""));
   return (
     <div className="products-layout">
       <h1>Products</h1>
-      <p>Our products</p>
+      <form className="form">
+      <input type="text" value={busqueda} placeholder="Name of product
+" onChange={(e)=>setBusqueda(e.target.value)}/>
+		<label className="lbl-nombre">
+			<span className="text-nomb">start looking for your product</span>
+		</label>
+	</form>
+      
+      <h3>Our products</h3>
       <div className="products-grid">
         {loading && setInterval((<Loader />),50000)}
 
-        {products.map((product) => {
+        {newProducts.map((product) => {
           return (
             <Product
               key={product.id}

@@ -88,7 +88,7 @@ function App() {
         
           const newQuantity = product.quantity - 1;
           if (newQuantity < 0) {
-            return product; // no permitimos que la cantidad sea menor que cero
+            return product; // no petmit >0
           }
         
           return {
@@ -160,8 +160,9 @@ function App() {
            
           </Route>
         </Routes>
-        
         {cart.length > 0  && <Link className="boton" onClick={handleProductDelAll}>empty cart </Link>}
+
+        
        
       </div>
       

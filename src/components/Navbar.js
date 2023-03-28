@@ -1,7 +1,35 @@
 import { NavLink } from "react-router-dom";
 import { BsPaypal } from 'react-icons/bs';
-
+import Time from "./Clock/UseTime";
+import { useState,useEffect } from "react";
+import Button from "./Button";
 export default function Navbar(props) {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  useEffect(() => {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (prefersDark) {
+      setIsDarkTheme(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isDarkTheme) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [isDarkTheme]);
+
+  function handleThemeClick() {
+    setIsDarkTheme(!isDarkTheme);
+  }
+  useEffect(() => {
+    if (isDarkTheme) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [isDarkTheme]);
   const cartCount = props.cart.reduce((total, product) => {
     if (product.quantity >= 0) {
       return total + product.quantity;
@@ -12,10 +40,18 @@ export default function Navbar(props) {
 
   return (
     <nav className="navbar">
+        <Time/>
       <NavLink to="/" className="nav-brand">
         Supermarket
       </NavLink>
       <ul>
+
+      
+
+      <li className="nav-item">
+          <Button className="theme-switcher" onClick={handleThemeClick}>{isDarkTheme ? "Dark" : "Light"}</Button>
+        </li>
+      
         <li className="nav-item">
           <NavLink className={({isActive}) => isActive ? "active" : ""} to="/">
             Home

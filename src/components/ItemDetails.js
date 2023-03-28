@@ -48,6 +48,7 @@ export default function ProductDetails(props) {
  }
  ]);
   const { get } = useFetch("https://react-tutorial-demo.firebaseio.com/");
+
   const params = useParams();
 
   useEffect(() => {

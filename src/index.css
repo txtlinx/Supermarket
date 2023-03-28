@@ -15,6 +15,7 @@
   --neutral-3: #94868b;
   --neutral-4: #d9cfd3;
   --neutral-5: #f2ecee;
+  
 
   /* Accent-blue colors */
   --accent-1: #970e3d;
@@ -24,32 +25,94 @@
   --accent-5: #fff2f7;
   --accent-6: #b89910;
 
+  --color-green: #00a878;
+  --color-red: #fe5e41;
+  --color-button: #fdffff;
+  --color-black: #000;
+
+}
+
+.switch-button {
+  display: inline-block;
+}
+.switch-button .switch-button__checkbox {
+  display: none;
+}
+.switch-button .switch-button__label {
+  background-color: var(--color-red);
+  width: 5rem;
+  height: 3rem;
+  border-radius: 3rem;
+  display: inline-block;
+  position: relative;
+}
+.switch-button .switch-button__label:before {
+  transition: .2s;
+  display: block;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--color-button);
+  content: '';
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 0px 1px var(--color-black);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.switch-button .switch-button__checkbox:checked + .switch-button__label {
+  background-color: var(--color-green);
+}
+.switch-button .switch-button__checkbox:checked + .switch-button__label:before {
+  transform: translateX(2rem);
 }
 
 body {
   background-color: var(--neutral-5);
   margin: 0;
+
 }
+/* Add this to the CSS file, after the existing `body {}` definition */
+body.dark {
+ 
+  box-shadow: inset 0px 0px 0px 1px var(--color-black);
+  color: rgb(0, 0, 0);
+  --neutral-5: #64585898;
+  --surface-color: #543939;
+  --surface-shadow: #222;
+  
+
+}
+
 
 h1 {
   font-size: 36px;
   font-weight: 600;
+  padding: 2px;
+  font-weight: 520;
+  
 }
 
 
 h2 {
   font-size: 28px;
   font-weight: 500;
+  font-weight: 520;
 }
 
 h3 {
   font-size: 24px;
   font-weight: normal;
+  font-weight: 20;
+  padding: 10px;
 }
 
 p {
   line-height: 30px;
   font-size: 18px;
+  padding: 7px;
+  font-weight: 520;
 }
 
 a {
@@ -399,6 +462,10 @@ input:focus {
 }
 .product:nth-child(2n + 1):hover .product-image {
   transform: scale(1.01) rotateZ(-2deg);
+  -webkit-transform: scale(1.01) rotateZ(-2deg);
+  -moz-transform: scale(1.01) rotateZ(-2deg);
+  -ms-transform: scale(1.01) rotateZ(-2deg);
+  -o-transform: scale(1.01) rotateZ(-2deg);
 }
 
 .product h3,
@@ -583,42 +650,57 @@ input:focus {
     }
 
 a.boton{
-	position: relative;
-	display: block;
-	padding: 25px 10px;
-	border-radius: 6px;
-	text-align: center;
-	font-weight: bold;
-	max-width: 320px;
-	height: 65px;
-	margin-bottom: 60px;
-	overflow: hidden;
-	color:rgba(255,255,255,1);
-	cursor: pointer;
-	letter-spacing: 2px;
-	box-shadow:inset 0 0 0 1px rgba(0,0,0,0.1);
-	text-decoration: none;
-	transition: all ease 0.5s;
-	background:#b89910;
+  position: relative;
+  display: block;
+  padding: 25px 10px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  max-width: 320px;
+  height: 65px;
+  margin-bottom: 60px;
+  overflow: hidden;
+  color:rgba(255,255,255,1);
+  cursor: pointer;
+  letter-spacing: 2px;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.1);
+  text-decoration: none;
+  transition: all ease 0.5s;
+  background:#b89910;
+  border-radius: 10%;
+  -webkit-border-radius: 10%;
+  -moz-border-radius: 10%;
+  -ms-border-radius: 10%;
+  -o-border-radius: 10%;
 }
  
 a.boton:after,
 a.boton:before{
-	width: 80px;
-	height: 200px;
-	content: '';
-	display: block;
-	background: rgba(255,255,255,0.5);
-	transform: rotate(45deg);
-	top: -60px;
-	position: absolute;
-	transition: none;
-	right:-45%;
-	cursor: pointer;
+  width: 80px;
+  height: 200px;
+  content: '';
+  display: block;
+  background: rgba(255,255,255,0.5);
+  transform: rotate(45deg);
+  top: -60px;
+  position: absolute;
+  transition: none;
+  right:-45%;
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }
  
 a.boton:before{
-	left: -48%;
+  left: -48%;
+  border-radius: 90%;
+  -webkit-border-radius: 90%;
+  -moz-border-radius: 90%;
+  -ms-border-radius: 90%;
+  -o-border-radius: 90%;
 }
  
 a.boton:hover{
@@ -628,13 +710,18 @@ a.boton:hover{
  
 a.boton:hover:after,
 a.boton:hover:before{
-	transform: rotate(45deg), scaleX(130%);
-	background: rgba(255,255,255,0.1);
-	transition: all ease 0.5s;
-	-webkit-transform: rotate(45deg), scaleX(130%);
-	-moz-transform: rotate(45deg), scaleX(130%);
-	-ms-transform: rotate(45deg), scaleX(130%);
-	-o-transform: rotate(45deg), scaleX(130%);
+  border-radius: 70%;
+  transform: rotate(45deg), scaleX(130%);
+  background: rgba(255,255,255,0.1);
+  transition: all ease 0.5s;
+  -webkit-transform: rotate(45deg), scaleX(130%);
+  -moz-transform: rotate(45deg), scaleX(130%);
+  -ms-transform: rotate(45deg), scaleX(130%);
+  -o-transform: rotate(45deg), scaleX(130%);
+  -webkit-border-radius: 70%;
+  -moz-border-radius: 70%;
+  -ms-border-radius: 70%;
+  -o-border-radius: 70%;
 }
  
 a.boton:hover:after{
@@ -644,3 +731,83 @@ a.boton:hover:after{
 a.boton:hover:before{
 	left: 30%;
 }
+
+.form{
+  width: 100%;
+  height: 50px;
+  max-width: 400px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20%;
+  -webkit-border-radius: 20%;
+  -moz-border-radius: 20%;
+  -ms-border-radius: 20%;
+  -o-border-radius: 20%;
+}
+.form input{
+  width: 100%;
+  height: 100%;
+  background: none;
+  color: #0000008c;
+  padding-top: 13px;
+  border: none;
+  outline: 0px;
+  font-size: 17px;
+  font-style: var(--primary-1);
+}
+.form .lbl-nombre{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #c7c7c7;
+  
+}
+.form .lbl-nombre:after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #2ecece;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+}
+.text-nomb{
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  transition: all 0.3s ease;
+  color: #126703;
+  padding: 4px;
+  font-size: 20px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.form input:focus + .lbl-nombre .text-nomb,.form input:valid + .lbl-nombre .text-nomb{
+  transform: translateY(-150%);
+  font-size: 35px;
+  color: #2ecece;
+  font-size: 12px;
+  padding: 4px;
+ 
+}
+.form input:focus + .lbl-nombre:after, .form input:valid + .lbl-nombre:after{
+  transform: translateX(0%);
+}
+@media only screen and (min-width:320px) and (max-width:768px){
+ .form{
+  width:85%;
+}
+  }
+  
+
